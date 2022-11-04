@@ -31,3 +31,12 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.modal-header{
+  background-color:rgb(220, 52, 77);
+}
+
+h5{
+  color:rgb(255, 255, 255);
+}
+

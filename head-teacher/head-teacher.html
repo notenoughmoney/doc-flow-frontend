@@ -27,13 +27,35 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <img src="../../school.png" class="img-fluid mx-2" width="120" />
-        <span class="navbar-brand mb-0 fs-3">Фамилия Имя Отчество</span>
+        <img src="../../school.png" class="img-fluid mx-5" width="120" />
+
+        <div class="col"> 
+          <h5>
+            <p class="text-white mb-0">Школьная</p>
+            <p class="text-white mb-0">Система</p>
+            <p class="text-white mb-0">Документооборота</p>
+          </h5>
+        </div>
+        
+        <!-- <div class="col align-items-right align-self-right"> 
+          <div class="row align-items-right"><span id="fio" class="navbar-brand mb-0 fs-3">Фамилия Имя Отчество</span></div>
+          <div class="row align-items-right"><span id="job" class="navbar-brand mb-0 fs-6">Должность</span></div>
+        </div> -->
+        <!-- <span class="navbar-brand mb-0 fs-5">Школьная система документооборота</span> -->
+
+        <div class="col align-items-right"> 
+          <h5>
+            <p id="fio" class="text-white text-end fs-4 mb-0 mx-5">ФИО</p>
+            <br>
+            <p id="job" class="text-white text-end fs-6 mb-0 mx-5">Должность</p>
+          </h5>
+        </div>
+
         <div class="d-grid gap-2 col-1 mx-right">
-          <button class="btn btn-primary btn-lg" type="button">
+          <button class="btn btn-primary" type="button">
             Настройки
           </button>
-          <button class="btn btn-primary btn-lg" type="button">Выход</button>
+          <button class="btn btn-primary" type="button">Выход</button>
         </div>
       </div>
     </nav>
