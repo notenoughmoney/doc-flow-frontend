@@ -25,6 +25,7 @@ $(document).ready(function(){
                 } else {
                     console.log(result[0]);
                     // устанавиливаем local storage
+                    localStorage.setItem("id", result[0].id);
                     localStorage.setItem("fullName", result[0].fullName);
                     localStorage.setItem("job", result[0].job);
                     if (result[0].jobId >= 3 && result[0].jobId <= 5) {

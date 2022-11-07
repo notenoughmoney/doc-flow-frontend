@@ -1,0 +1,23 @@
+#uploadButton {
+    background-color: rgb(144, 185, 238);
+}
+
+#uploadButton:hover {
+    background-color: rgb(48, 111, 229);
+}
+
+#downloadButton {
+    background-color: rgb(150, 238, 144);
+}
+
+#downloadButton:hover {
+    background-color: rgb(48, 229, 72);
+}
+
+#uploadSuccess .modal-header{
+    background-color:rgb(25, 135, 84);
+}
+
+#whiteTitle{
+    color:rgb(255, 255, 255);
+  }
