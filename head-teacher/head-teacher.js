@@ -34,16 +34,23 @@ window.operateEvents = {
 // иконка для загрузки файла
 function fileFormatter(value, row) {
   if (value == null) {
-    return `<button id="uploadButton" data-bs-toggle="modal" data-bs-target="#fileUpload">
-    <i class="bi bi-upload"></i>
+    return `
+    <button 
+    class="btn btn-primary btn-sm"
+    id="uploadButton" 
+    data-bs-toggle="modal" 
+    data-bs-target="#fileUpload">
+      <i class="bi bi-upload"></i>
     </button>`;
   } else {
-    return `<button 
-      id="downloadButton" 
-      data-bs-toggle="modal" 
-      data-bs-target="#fileDownload" 
-      onclick="location.href='https://localhost:7263/api/FactDocs/download?filename=${value}'">
-    <i class="bi bi-download"></i>
+    return `
+    <button 
+    class="btn btn-success btn-sm"
+    id="downloadButton" 
+    data-bs-toggle="modal" 
+    data-bs-target="#fileDownload" 
+    onclick="location.href='https://localhost:7263/api/FactDocs/download?filename=${value}'">
+      <i class="bi bi-download"></i>
     </button>`;
   }
 }

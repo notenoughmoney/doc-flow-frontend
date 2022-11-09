@@ -83,6 +83,7 @@ function edit() {
 function actionFormatter(value, row) {
     return `
     <button 
+    class="btn btn-primary btn-sm"
     id="updateButton" 
     data-bs-toggle="modal" 
     data-bs-target="#updateRecordModal">
@@ -90,6 +91,7 @@ function actionFormatter(value, row) {
     </button>
     &nbsp&nbsp&nbsp&nbsp
     <button
+    class="btn btn-danger btn-sm"
     id="trashButton" 
     data-bs-toggle="modal" 
     data-bs-target="#deleteRecordModal">

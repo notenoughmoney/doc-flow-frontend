@@ -1,4 +1,4 @@
-#updateButton {
+/* #updateButton {
     background-color: rgb(144, 185, 238);
 }
 
@@ -12,7 +12,7 @@
 
 #trashButton:hover {
     background-color: rgb(255, 50, 50);
-}
+} */
 
 #updateSuccessModal .modal-header{
     background-color:rgb(25, 135, 84);

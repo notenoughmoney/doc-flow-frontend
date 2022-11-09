@@ -1,4 +1,4 @@
-#uploadButton {
+/* #uploadButton {
     background-color: rgb(144, 185, 238);
 }
 
@@ -12,7 +12,7 @@
 
 #downloadButton:hover {
     background-color: rgb(48, 229, 72);
-}
+} */
 
 #uploadSuccess .modal-header{
     background-color:rgb(25, 135, 84);
