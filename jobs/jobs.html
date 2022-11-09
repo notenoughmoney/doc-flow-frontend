@@ -26,6 +26,47 @@
 
   </head>
 
+    <!-- //////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////// -->
+
+    <!-- MODAL Создание должностей -->
+    <div id="createRecordModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Создание должности</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Название
+            <input id="createTitle" class="form-control form-control" type="text">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button id="createButton" type="button" class="btn btn-primary" onclick="create()" disabled>Создать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL Успешное изменение должности -->
+    <div id="createSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="whiteTitle" class="modal-title">Уведомление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Должность была успешно создана
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- MODAL Редактирование должностей -->
     <div id="updateRecordModal" class="modal" tabindex="-1">
       <div class="modal-dialog">
@@ -84,6 +125,27 @@
       </div>
     </div>
 
+    <!-- MODAL Успешное удаление должности -->
+    <div id="deleteSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="whiteTitle" class="modal-title">Уведомление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Должность была успешно удалена
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////// -->
+
   <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -123,9 +185,14 @@
         <h4>Справочник: Должности</h4>
 
         <div id="toolbar">
-          <button id="createButton" type="button" class="btn btn-primary" onclick="create()">
-            <i class="bi bi-plus"></i>
-            Создать
+          <button 
+            id="createButton" 
+            type="button" 
+            class="btn btn-primary" 
+            data-bs-toggle="modal" 
+            data-bs-target="#createRecordModal">
+              <i class="bi bi-plus"></i>
+              Создать
           </button>
         </div>
 

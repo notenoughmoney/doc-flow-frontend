@@ -31,6 +31,15 @@ window.operateEvents = {
   },
 };
 
+// проверка нормального ввода
+$('#createTitle').on('input', function () {
+  if ($('#createTitle').val() != "") {
+    $('#createButton').prop('disabled', false);
+  } else {
+    $('#createButton').prop('disabled', true);
+  }
+});
+
 // проверка совершённых изменений
 $('#editTitle').on('input', function () {
   console.log($('#editTitle').val());
@@ -40,6 +49,42 @@ $('#editTitle').on('input', function () {
     $('#editButton').prop('disabled', true);
   }
 });
+
+function create() {
+  
+  const data = {
+    "jobTitle": $('#createTitle').val()
+  }
+
+  console.log(data);
+
+  $.ajax({
+    type: "POST",
+    url: `https://localhost:7263/api/Jobs`,
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    dataType: "json",
+    cache: false,
+    timeout: 600000,
+    success: function (data) {
+      console.log("SUCCESS : ", data);
+
+      // кидаем уведомление об успешной загрузке
+      $('#createRecordModal').modal('hide');
+      $('#createSuccessModal').modal('show');
+      
+    },
+    error: function (e) {
+      $("#result").text(e.responseText);
+      console.log("ERROR : ", e);
+    }
+  });
+
+  // ждём 1 секунду и обновляем таблицу 
+  setTimeout(function(){
+    initTable();
+  }, 1000);
+}
 
 function edit() {
 
@@ -78,6 +123,34 @@ function edit() {
   }, 1000);
 }
 
+function delete_() {
+
+  $.ajax({
+    type: "DELETE",
+    url: `https://localhost:7263/api/Jobs/${redux.id}`,
+    contentType: 'application/json',
+    dataType: "json",
+    cache: false,
+    timeout: 600000,
+    success: function (data) {
+      console.log("SUCCESS : ", data);
+
+      // кидаем уведомление об успешном удалении
+      $('#deleteRecordModal').modal('hide');
+      $('#deleteSuccessModal').modal('show');
+      
+    },
+    error: function (e) {
+      $("#result").text(e.responseText);
+      console.log("ERROR : ", e);
+    }
+  });
+
+  // ждём 1 секунду и обновляем таблицу 
+  setTimeout(function(){
+    initTable();
+  }, 1000);
+}
 
 // иконка для загрузки файла
 function actionFormatter(value, row) {
