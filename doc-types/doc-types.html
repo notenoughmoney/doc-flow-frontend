@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Школьная система документооборота</title>
+    <!--Favicon-->
+    <link rel="icon" type="image/x-icon" href="/school.png"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+
+    <link href="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="doc-types.css" rel="stylesheet"/>
+
+  </head>
+
+    <!-- //////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////// -->
+
+    <!-- MODAL Создание типов документов -->
+    <div id="createRecordModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Создание типа документов</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Название
+            <input id="createTitle" class="form-control form-control" type="text">
+            <br>
+            Шаблон
+            <div class="mb-3">
+              <form id="formCreate" method="PUT" enctype="multipart/form-data">
+                <input class="form-control" type="file" id="formCreateFile">
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button id="createButton" type="button" class="btn btn-primary" onclick="create()" disabled>Создать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL Успешное создание типа документов -->
+    <div id="createSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="whiteTitle" class="modal-title">Уведомление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Тип документов был успешно создан
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL Редактирование типа документов -->
+    <div id="updateRecordModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Редактирование типа документов</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Название
+            <input id="editTitle" class="form-control form-control" type="text">
+            <br>
+            Шаблон
+            <div class="mb-3">
+              <form id="formEdit" method="PUT" enctype="multipart/form-data">
+                <input class="form-control" type="file" id="formEditFile">
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button id="editButton" type="button" class="btn btn-primary" onclick="edit()" disabled>Изменить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL Успешное изменение типа документов -->
+    <div id="updateSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="whiteTitle" class="modal-title">Уведомление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Тип документов был успешно изменён
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- MODAL Удаление типа документов -->
+    <div id="deleteRecordModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Удаление типа документов</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Вы действительно хотите удалить этот тип документов?
+            <h5><p id="deleteTitle">Название</p></h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button id="deleteButton" type="button" class="btn btn-primary" onclick="delete_()">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL Успешное удаление типа документов -->
+    <div id="deleteSuccessModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="whiteTitle" class="modal-title">Уведомление</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Тип документов был успешно удалён
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////// -->
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container-fluid">
+        <img src="../../school.png" class="img-fluid mx-5" width="120" />
+
+        <div class="col"> 
+          <h5>
+            <p class="text-white mb-0">Школьная</p>
+            <p class="text-white mb-0">Система</p>
+            <p class="text-white mb-0">Документооборота</p>
+          </h5>
+        </div>
+
+        <div class="col align-items-right"> 
+          <h5>
+            <p id="fio" class="text-white text-end fs-4 mb-0 mx-5">ФИО</p>
+            <br>
+            <p id="job" class="text-white text-end fs-6 mb-0 mx-5">Должность</p>
+          </h5>
+        </div> 
+
+        <div class="d-grid gap-2 col-1 mx-right">
+          <button class="btn btn-primary" type="button" onclick="location.href='..\\head-teacher\\head-teacher.html'">
+            Главная
+          </button>
+          <button class="btn btn-primary" type="button" onclick="location.href='..\\signin\\signin.html'">
+            Выход
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!--Главное-->
+    <main class="container">
+      <div class="bg-light p-5 rounded">
+        <h4>Справочник: Типы документов</h4>
+
+        <div id="toolbar">
+          <button 
+            id="createButton" 
+            type="button" 
+            class="btn btn-primary" 
+            data-bs-toggle="modal" 
+            data-bs-target="#createRecordModal">
+              <i class="bi bi-plus"></i>
+              Создать
+          </button>
+        </div>
+
+        <table
+          id="table"
+          data-toolbar="#toolbar"
+          data-search="true"
+          data-show-toggle="true"
+          data-show-columns="true"
+          data-show-columns-toggle-all="true"
+          data-show-export="true"
+          data-click-to-select="true"
+          data-detail-formatter="detailFormatter"
+          data-minimum-count-columns="2"
+          data-id-field="id"
+          data-page-list="[10, 25, 50, 100, all]"
+          data-side-pagination="server"
+          data-response-handler="responseHandler">
+          <thead>
+            <tr>
+              <th data-field="id">ID</th>
+              <th data-field="title">Название типа</th>
+              <th data-field="action" data-formatter="actionFormatter" data-align="center">Действие</th>
+              <th data-field="linktoshablon" data-formatter="fileFormatter" data-align="center">Шаблон</th>
+            </tr>
+          </thead>
+        </table>
+          
+      </div>
+    </main>
+
+    <script src="doc-types.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.0/dist/bootstrap-table.min.js"></script>
+
+  </body>
+</html>
