@@ -1,0 +1,27 @@
+/* #updateButton {
+    background-color: rgb(144, 185, 238);
+}
+
+#updateButton:hover {
+    background-color: rgb(48, 111, 229);
+}
+
+#trashButton {
+    background-color: rgb(255, 120, 120);
+}
+
+#trashButton:hover {
+    background-color: rgb(255, 50, 50);
+} */
+
+#createSuccessModal .modal-header{
+    background-color:rgb(25, 135, 84);
+}
+
+#updateSuccessModal .modal-header{
+    background-color:rgb(25, 135, 84);
+}
+
+#deleteSuccessModal .modal-header{
+    background-color:rgb(25, 135, 84);
+}
