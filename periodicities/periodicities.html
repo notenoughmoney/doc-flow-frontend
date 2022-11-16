@@ -39,14 +39,35 @@
           </div>
           <div class="modal-body">
             Название
-            <input id="createTitle" class="form-control form-control" type="text">
+            <input id="createTitle" class="form-control" type="text">
             <br>
             Даты
-            
+            <div class="row">
+              <input id="createDate0" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate1" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate2" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate3" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate4" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate5" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+            </div>
+            <div class="row">
+              <input id="createDate6" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate7" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate8" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate9" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate10" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate11" class="form-control form-control-date-create" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+            </div>
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspФормат ввода даты: дд.мм
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspОдна периодичность поддерживает не больше 12 дат
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspДаты заполняются последовательно, без пропусков
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button id="createButton" type="button" class="btn btn-primary" onclick="create()" disabled>Создать</button>
+            <button id="createButton" type="button" class="btn btn-primary" onclick="create()">Создать</button>
           </div>
         </div>
       </div>
@@ -83,11 +104,32 @@
             <input id="editTitle" class="form-control form-control" type="text">
             <br>
             Даты
-            
+            <div class="row">
+              <input id="createDate0" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate1" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate2" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate3" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate4" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate5" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+            </div>
+            <div class="row">
+              <input id="createDate6" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate7" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate8" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate9" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate10" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+              <input id="createDate11" class="form-control form-control-date-edit" type="text" pattern="\d\d.\d\d" required placeholder="дд.мм" maxlength="5">
+            </div>
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspФормат ввода даты: дд.мм
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspОдна периодичность поддерживает не больше 12 дат
+            <br>
+            <i class="bi bi-exclamation"></i>&nbspДаты заполняются последовательно, без пропусков
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-            <button id="editButton" type="button" class="btn btn-primary" onclick="edit()" disabled>Изменить</button>
+            <button id="editButton" type="button" class="btn btn-primary" onclick="edit()">Изменить</button>
           </div>
         </div>
       </div>

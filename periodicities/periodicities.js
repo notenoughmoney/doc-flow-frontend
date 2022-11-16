@@ -52,33 +52,29 @@ $('#editTitle').on('input', function () {
 
 function create() {
   
-  // получаем форму
-  var form = $('#form')[0];
-  // создаём новый объект формы 
-  var data = new FormData(form);
-  // получаем количество файликов в форме
-  // это число должно быть равно 1
-  var totalFiles = document.getElementById("formCreateFile").files.length;
-  console.log(totalFiles);
-  // заносим их в data
-  for (var i = 0; i < totalFiles; i++) {
-    var file = document.getElementById("formCreateFile").files[i];
-    data.append("files", file);
+  // в один массив все даты
+  var datesArray = [];
+  var inputs = $('.form-control-date-create');
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value == "") break;
+    datesArray.push(inputs[i].value + ".2000");
   }
 
-  const titleObj = {"title": $('#createTitle').val()}
+  console.log(datesArray);
 
-  data.append("docTypes", JSON.stringify(titleObj));
+  const data = {
+    "periodicityTitle": $('#createTitle').val(),
+    "dates": datesArray
+  }
 
   console.log(data);
 
   $.ajax({
     type: "POST",
-    url: `https://localhost:7263/api/DocTypes`,
-    data: data,
-    enctype: 'multipart/form-data',
-    processData: false,
-    contentType: false,
+    url: `https://localhost:7263/api/Periodicities`,
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    dataType: "json",
     cache: false,
     timeout: 600000,
     success: function (data) {
@@ -101,38 +97,33 @@ function create() {
   }, 1000);
 }
 
+
 function edit() {
   
-  // получаем форму
-  var form = $('#form')[0];
-  // создаём новый объект формы 
-  var data = new FormData(form);
-  // получаем количество файликов в форме
-  // это число должно быть равно 1
-  var totalFiles = document.getElementById("formEditFile").files.length;
-  console.log(totalFiles);
-  // заносим их в data
-  for (var i = 0; i < totalFiles; i++) {
-    var file = document.getElementById("formEditFile").files[i];
-    data.append("files", file);
+  // в один массив все даты
+  var datesArray = [];
+  var inputs = $('.form-control-date-edit');
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value == "") break;
+    datesArray.push(inputs[i].value + ".2000");
   }
 
-  const titleObj = {
-    "docTypeId": redux.id,
-    "title": $('#editTitle').val()
-  }
+  console.log(datesArray);
 
-  data.append("docTypes", JSON.stringify(titleObj));
+  const data = {
+    "periodicityId": redux.id,
+    "periodicityTitle": $('#editTitle').val(),
+    "dates": datesArray
+  }
 
   console.log(data);
 
   $.ajax({
     type: "PUT",
-    url: `https://localhost:7263/api/DocTypes`,
-    data: data,
-    enctype: 'multipart/form-data',
-    processData: false,
-    contentType: false,
+    url: `https://localhost:7263/api/Periodicities`,
+    data: JSON.stringify(data),
+    contentType: 'application/json',
+    dataType: "json",
     cache: false,
     timeout: 600000,
     success: function (data) {
@@ -159,7 +150,7 @@ function delete_() {
 
   $.ajax({
     type: "DELETE",
-    url: `https://localhost:7263/api/DocTypes/${redux.id}`,
+    url: `https://localhost:7263/api/Periodicities/${redux.id}`,
     contentType: 'application/json',
     dataType: "json",
     cache: false,
@@ -206,21 +197,21 @@ function actionFormatter(value, row) {
 
 function datesFormatter(value, row) {
   var string = "";
+  var temp = [];
   for (let i = 0; i < value.length; i++) {
-    console.log(value[i].substring(2, 5));
-    if (value[i].substring(2, 5) == "-01") value[i] = value[i].replace("-01", " января");
-    if (value[i].substring(2, 5) == "-02") value[i] = value[i].replace("-02", " февраля");
-    if (value[i].substring(2, 5) == "-03") value[i] = value[i].replace("-03", " марта");
-    if (value[i].substring(2, 5) == "-04") value[i] = value[i].replace("-04", " апреля");
-    if (value[i].substring(2, 5) == "-05") value[i] = value[i].replace("-05", " мая");
-    if (value[i].substring(2, 5) == "-06") value[i] = value[i].replace("-06", " июня");
-    if (value[i].substring(2, 5) == "-07") value[i] = value[i].replace("-07", " июля");
-    if (value[i].substring(2, 5) == "-08") value[i] = value[i].replace("-08", " августа");
-    if (value[i].substring(2, 5) == "-09") value[i] = value[i].replace("-09", " сентября");
-    if (value[i].substring(2, 5) == "-10") value[i] = value[i].replace("-10", " октября");
-    if (value[i].substring(2, 5) == "-11") value[i] = value[i].replace("-11", " ноября");
-    if (value[i].substring(2, 5) == "-12") value[i] = value[i].replace("-12", " декабря");
-    string += value[i] + "<br>";
+    if (value[i].substring(2, 5) == ".01") temp[i] = value[i].replace(".01", " января");
+    if (value[i].substring(2, 5) == ".02") temp[i] = value[i].replace(".02", " февраля");
+    if (value[i].substring(2, 5) == ".03") temp[i] = value[i].replace(".03", " марта");
+    if (value[i].substring(2, 5) == ".04") temp[i] = value[i].replace(".04", " апреля");
+    if (value[i].substring(2, 5) == ".05") temp[i] = value[i].replace(".05", " мая");
+    if (value[i].substring(2, 5) == ".06") temp[i] = value[i].replace(".06", " июня");
+    if (value[i].substring(2, 5) == ".07") temp[i] = value[i].replace(".07", " июля");
+    if (value[i].substring(2, 5) == ".08") temp[i] = value[i].replace(".08", " августа");
+    if (value[i].substring(2, 5) == ".09") temp[i] = value[i].replace(".09", " сентября");
+    if (value[i].substring(2, 5) == ".10") temp[i] = value[i].replace(".10", " октября");
+    if (value[i].substring(2, 5) == ".11") temp[i] = value[i].replace(".11", " ноября");
+    if (value[i].substring(2, 5) == ".12") temp[i] = value[i].replace(".12", " декабря");
+    string += temp[i] + "<br>";
   }
   return string;
 }
@@ -255,6 +246,7 @@ function initTable() {
     for(let j = 0; j < data[i].dates.length; j++){
       data[i].dates[j] = dateFormat(data[i].dates[j].substring(0, 10), 'dd-MM-yyyy');
       data[i].dates[j] = data[i].dates[j].substring(0, 5);  
+      data[i].dates[j] = data[i].dates[j].replace("-", ".");
     }
   }
 
@@ -287,7 +279,13 @@ function initTable() {
     if (args.length === 3) {
       redux = args[0];
       console.log(redux);
+
+      var inputs = $('.form-control-date-edit');
+      for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = (!redux.dates[i]) ? "" : redux.dates[i];
+      }
       $('#editTitle').val(redux.title);
+
       $('#deleteTitle').text(redux.title);
     }
   });

@@ -25,3 +25,7 @@
 #deleteSuccessModal .modal-header{
     background-color:rgb(25, 135, 84);
 }
+
+.form-control-date-create, .form-control-date-edit {
+    width: 80px;
+}
