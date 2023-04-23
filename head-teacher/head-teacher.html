@@ -133,7 +133,7 @@
           id="table"
           data-toolbar="#toolbar"
           data-search="true"
-          
+          data-sortable="true"
           data-show-toggle="true"
 
           data-show-columns="true"
@@ -147,21 +147,21 @@
           data-id-field="id"
           data-page-list="[10, 25, 50, 100, all]"
 
-          data-side-pagination="server"
+          
           data-response-handler="responseHandler">
           <thead>
             <tr>
-              <th data-field="id">ID</th>
-              <th data-field="workerId">Worker ID</th>
-              <th data-field="fullName">ФИО</th>
-              <th data-field="job">Job ID</th>
-              <th data-field="jobTitle">Должность</th>
-              <th data-field="docType">DocType ID</th>
-              <th data-field="docTypeTitle">Тип документа</th>
-              <th data-field="dateToPass">Дата сдачи (план)</th>
-              <th data-field="dateOfPass">Дата сдачи (факт)</th>
-              <th data-field="linkToFile" data-formatter="fileFormatter" data-align="center">Файл</th>
-              <th data-field="isRelevant">Актуально</th>
+              <th data-field="id" data-sortable="true">ID</th>
+              <th data-field="workerId" data-sortable="true">Worker ID</th>
+              <th data-field="fullName" data-sortable="true">ФИО</th>
+              <th data-field="job" data-sortable="true">Job ID</th>
+              <th data-field="jobTitle" data-sortable="true">Должность</th>
+              <th data-field="docType" data-sortable="true">DocType ID</th>
+              <th data-field="docTypeTitle" data-sortable="true">Тип документа</th>
+              <th data-field="dateToPass" data-sortable="true" data-sorter="dateSorter">Дата сдачи (план)</th>
+              <th data-field="dateOfPass" data-sortable="true" data-sorter="dateSorter">Дата сдачи (факт)</th>
+              <th data-field="linkToFile" data-formatter="fileFormatter" data-align="center" data-sortable="true">Файл</th>
+              <th data-field="isRelevant" data-sortable="true">Актуально</th>
             </tr>
           </thead>
         </table>

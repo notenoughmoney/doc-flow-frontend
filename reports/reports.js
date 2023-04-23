@@ -117,9 +117,9 @@ function formReport() {
   // приводим полученные данные в читаемый вид
   for(let i = 0; i < data.length; i++){
     if (data[i].dateToPass != null)
-      data[i].dateToPass = data[i].dateToPass.substring(0, 10);
+      data[i].dateToPass = dateFormat(data[i].dateToPass.substring(0, 10), 'dd-MM-yyyy');
     if (data[i].dateOfPass != null)
-      data[i].dateOfPass = data[i].dateOfPass.substring(0, 10);
+      data[i].dateOfPass = dateFormat(data[i].dateOfPass.substring(0, 10), 'dd-MM-yyyy');
     data[i].isRelevant = (data[i].isRelevant === true) ? "Да" : "Нет";
   }
 
