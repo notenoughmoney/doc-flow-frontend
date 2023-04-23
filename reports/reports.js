@@ -1,3 +1,28 @@
+
+  // $('table').on('click', function() {   
+  //   console.log(123); 
+  //   $('tr').each(function(){    
+  //       var plan = $(this)[0].cells[2].innerText;
+  //       var fact = $(this)[0].cells[3].innerText;
+  //       console.log(plan);
+  //       if (dateSorter(plan, fact) < 0)
+  //           $(this).addClass("table-danger");
+  //       if (plan == fact)
+  //           $(this).addClass("table-warning");
+  //     });
+  // });
+
+  setInterval(() => {
+    $('tr').each(function(){    
+    var plan = $(this)[0].cells[2].innerText;
+    var fact = $(this)[0].cells[3].innerText;
+    if (dateSorter(plan, fact) < 0)
+        $(this).addClass("table-danger");
+    if (plan == fact)
+        $(this).addClass("table-warning");
+    });
+  }, 1000);
+
 function getIdSelections() {
   return $.map($table.bootstrapTable("getSelections"), function (row) {
     return row.id;
@@ -204,6 +229,16 @@ function formReport() {
     }
   });
 
+  $('tr').each(function(){    
+    var plan = $(this)[0].cells[2].innerText;
+    var fact = $(this)[0].cells[3].innerText;
+    console.log(plan);
+    if (dateSorter(plan, fact) < 0)
+        $(this).addClass("table-danger");
+    if (plan == fact)
+        $(this).addClass("table-warning");
+  }); 
+
   // показываем таблицу
-  $table.show();
+  $table.show();   
 }

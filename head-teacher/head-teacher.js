@@ -362,3 +362,15 @@ function initTableWithOthers() {
 }
 
 initTableWithMine();
+
+
+setInterval(() => {
+  $('tr').each(function(){    
+  var plan = $(this)[0].cells[1].innerText;
+  var fact = $(this)[0].cells[2].innerText;
+  if (dateSorter(plan, fact) < 0)
+      $(this).addClass("table-danger");
+  if (plan == fact)
+      $(this).addClass("table-warning");
+  });
+}, 1000);

@@ -5,4 +5,4 @@ $('#job').text(localStorage.getItem('job'));
 var $table = $("#table");
 $table.hide();
 var $remove = $("#remove");
-var selections = []; 
+var selections = [];    
