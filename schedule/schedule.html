@@ -31,24 +31,21 @@
 
     <!-- MODAL Создание пункта расписания -->
     <div id="createRecordModal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Создание пункта расписания</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Тип документа
-            <select id="form-select-docType-create" class="form-select form-select-docType" aria-label="Default select example">
-            </select>
-            <br>
-            Должность ответственного
-            <select id="form-select-job-create" class="form-select form-select-job" aria-label="Default select example">
-            </select>
-            <br>
-            Периодичность
-            <select id="form-select-period-create" class="form-select form-select-period" aria-label="Default select example">
-            </select>
+            <div class="row row-cols-2">
+              <div class="col">Тип документа</div>
+              <div class="col"><select id="form-select-docType-create" class="form-select form-select-docType" aria-label="Default select example"></select><br></div>
+              <div class="col">Должность ответственного</div>
+              <div class="col"><select id="form-select-job-create" class="form-select form-select-job" aria-label="Default select example"></select><br></div>
+              <div class="col">Периодичность</div>
+              <div class="col"><select id="form-select-period-create" class="form-select form-select-period" aria-label="Default select example"></select></div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
@@ -78,24 +75,21 @@
 
     <!-- MODAL Редактирование пункта расписания -->
     <div id="updateRecordModal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Изменение пункта расписания</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Тип документа
-            <select id="form-select-docType-edit" class="form-select form-select-docType" aria-label="Default select example">
-            </select>
-            <br>  
-            Должность ответственного
-            <select id="form-select-job-edit" class="form-select form-select-job" aria-label="Default select example">
-            </select>
-            <br>
-            Периодичность
-            <select id="form-select-period-edit" class="form-select form-select-period" aria-label="Default select example">
-            </select>
+            <div class="row row-cols-2">
+              <div class="col">Тип документа</div>
+              <div class="col"><select id="form-select-docType-edit" class="form-select form-select-docType" aria-label="Default select example"></select><br>  </div>
+              <div class="col">Должность ответственного</div>
+              <div class="col"><select id="form-select-job-edit" class="form-select form-select-job" aria-label="Default select example"></select><br></div>
+              <div class="col">Периодичность</div>
+              <div class="col"><select id="form-select-period-edit" class="form-select form-select-period" aria-label="Default select example"></select></div>
+            </div>    
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
