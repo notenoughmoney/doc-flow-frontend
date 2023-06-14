@@ -365,8 +365,11 @@ initTableWithMine();
 
 setInterval(() => {
   $('tr').each(function(){    
-  var plan = $(this)[0].cells[2].innerText;
-  var fact = $(this)[0].cells[3].innerText;
+  var plan = $(this)[0].cells[1].innerText;
+  var fact = $(this)[0].cells[2].innerText;
+  if (fact == "-") fact = moment().format('DD-MM-YYYY');
+
+  console.log(fact);
   if (dateSorter(plan, fact) < 0)
       $(this).addClass("table-danger");
   if (plan == fact)
