@@ -151,7 +151,7 @@ function formReport() {
   // фильтруем по датам
   if ($('#startDate').val() != "") {
     for (let i = 0; i < data.length; i++) {
-      if (data[i].dateToPass <= $('#startDate').val()) {
+      if (dateSorter(data[i].dateToPass, $('#startDate').val()) < 0) {
         data[i] = 0;
       }
     }

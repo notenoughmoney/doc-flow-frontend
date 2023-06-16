@@ -159,6 +159,11 @@ function initTableWithMine() {
     data[i].isRelevant = (data[i].isRelevant === true) ? "Да" : "Нет";
   }
 
+  if (data == "P0001: Для данного пользователя нет назначенных документов") {
+    $("#table").remove();
+    $("#label").text("У вас нет документов, представленных к сдаче");
+  }
+
   $table.bootstrapTable("destroy").bootstrapTable({
     height: 550,
     locale: "ru-RU",

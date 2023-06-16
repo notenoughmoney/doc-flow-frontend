@@ -39,7 +39,8 @@ $(document).ready(function(){
                         result[0].jobId == 2 ||
                         result[0].jobId == 6 ||
                         result[0].jobId == 7 ||
-                        result[0].jobId == 8) {
+                        result[0].jobId == 8 ||
+                        result[0].jobId == 18) {
                             window.location.href = '..\\teacher\\teacher.html';
                     } else if (
                         result[0].jobId == 9) {
